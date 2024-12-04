@@ -2,66 +2,53 @@ import numpy as np
 import re
 
 
-def find_matches(arr):
+def count_arr_matches(arr):
     return len(re.findall("XMAS", "".join(arr))) + len(re.findall("SAMX", "".join(arr)))
 
 
-def find_xmas_matches(matrix):
+def count_xmas_matches(matrix: np.ndarray) -> int:
     count = 0
 
     # Rows
-    for i in range(char_arr.shape[0]):
-        count += find_matches(char_arr[i, :])
+    for i in range(matrix.shape[0]):
+        count += count_arr_matches(matrix[i, :])
 
     # Cols
-    for j in range(char_arr.shape[1]):
-        count += find_matches(char_arr[:, j])
+    for j in range(matrix.shape[1]):
+        count += count_arr_matches(matrix[:, j])
 
     # Diagonals top-left to bottom-right
-    for k in range(-char_arr.shape[0], char_arr.shape[1]):
-        count += find_matches(char_arr.diagonal(offset=k))
+    for k in range(-matrix.shape[0], matrix.shape[1]):
+        count += count_arr_matches(matrix.diagonal(offset=k))
 
     # Diagonals bottom-left to top-right
-    flipped = np.flipud(char_arr)
+    flipped = np.flipud(matrix)
     for k in range(-flipped.shape[0], flipped.shape[1]):
-        count += find_matches(flipped.diagonal(offset=k))
+        count += count_arr_matches(flipped.diagonal(offset=k))
 
     return count
 
 
-def find_cross_mas_matches(matrix):
+def count_cross_mas_matches(matrix: np.ndarray) -> int:
     n_matches = 0
 
     starts = np.array(np.where(matrix == "A")).T
 
     for i in range(starts.shape[0]):
         index = starts[i]
-        first = False
 
-        # Begin ugly code
         if index[0] == 0 or index[0] == matrix.shape[0] - 1 or index[1] == 0 or index[1] == matrix.shape[1] - 1:
             continue
 
-        # Check first diagonal
-        match matrix[tuple(index + np.array([-1, -1]))]:
-            case "M":
-                if matrix[tuple(index + np.array([1, 1]))] == "S":
-                    first = True
-            case "S":
-                if matrix[tuple(index + np.array([1, 1]))] == "M":
-                    first = True
+        top_left, top_right, bottom_left, bottom_right = (str(matrix[tuple(index + np.array([-1, -1]))]),
+                                                          str(matrix[tuple(index + np.array([1, -1]))]),
+                                                          str(matrix[tuple(index + np.array([-1, 1]))]),
+                                                          str(matrix[tuple(index + np.array([1, 1]))]))
 
-        # Check second diagonal
-        if first:
-            match matrix[tuple(index + np.array([-1, 1]))]:
-                case "M":
-                    if matrix[tuple(index + np.array([1, -1]))] == "S":
-                        n_matches += 1
-                case "S":
-                    if matrix[tuple(index + np.array([1, -1]))] == "M":
-                        n_matches += 1
+        if (re.match("[MS]", top_left) and re.match("[MS]", bottom_right) and bottom_right != top_left and
+                re.match("[MS]", top_right) and re.match("[MS]", bottom_left) and bottom_left != top_right):
+            n_matches += 1
 
-        # End ugly code
 
     return n_matches
 
@@ -78,4 +65,4 @@ if __name__ == "__main__":
 
     char_arr = np.array(char_matrix)
 
-    print(find_cross_mas_matches(char_arr))
+    print(count_cross_mas_matches(char_arr))
