@@ -2,7 +2,7 @@ import numpy as np
 import re
 
 
-def count_arr_matches(arr):
+def count_arr_matches(arr: np.ndarray):
     return len(re.findall("XMAS", "".join(arr))) + len(re.findall("SAMX", "".join(arr)))
 
 
@@ -54,15 +54,15 @@ def count_cross_mas_matches(matrix: np.ndarray) -> int:
 
 
 if __name__ == "__main__":
-    char_matrix = []
+    char_list = []
     with open("data_day4.txt", "r") as f:
         for line in f:
             line_chars = []
             for char in line:
                 if char != "\n":
                     line_chars.append(char)
-            char_matrix.append(line_chars)
+            char_list.append(line_chars)
 
-    char_arr = np.array(char_matrix)
+    char_arr = np.array(char_list)
 
     print(count_cross_mas_matches(char_arr))
