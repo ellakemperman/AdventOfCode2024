@@ -22,13 +22,18 @@ def count_middle(orderings: list, rules: pd.DataFrame):
 
 def reorder_ordering(ordering: list[int], rules: pd.DataFrame):
     ordering = ordering.copy()
-    while not filter_ordering(ordering, rules):
-        for rule in get_applicable_rules(ordering, rules):
-            if (index0 := ordering.index(rule[0])) < (index1 := ordering.index(rule[1])):
-                continue
+    i = 0
+    reorders = 1
+    applicable_rules = get_applicable_rules(ordering, rules)
+    while i < applicable_rules.shape[0]:
+        rule = applicable_rules[i]
+        if (index0 := ordering.index(rule[0])) > (index1 := ordering.index(rule[1])):
             ordering[index0] = rule[1]
             ordering[index1] = rule[0]
-            break
+            reorders += 1
+            i = 0
+
+        i += 1
     return ordering
 
 
