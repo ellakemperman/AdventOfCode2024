@@ -69,19 +69,14 @@ def map_stones(func: Callable[[int], Sequence[int]], xs: dict[int, int]) -> dict
 
 
 def simulate_stone(stones: dict[int, int], rules: tuple[StoneRule, ...], n_sims: int) -> dict[int, int]:
-    prev = 1
     for i in range(n_sims):
         stones = map_stones(lambda stone: apply_rules(stone, rules), stones)
-        length = len(stones)
-        print(length / prev)
-        prev = length
-
     return stones
 
 
 if __name__ == '__main__':
     rules = (ZeroToOneRule(), StoneSplitRule(), DefaultRule())
-    with open("day11.txt", "r") as f:
+    with open("data_day11.txt", "r") as f:
         line = f.readline()
     data = {}
     for ele in line.split(" "):
