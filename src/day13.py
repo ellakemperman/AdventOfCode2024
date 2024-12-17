@@ -28,7 +28,7 @@ def parse_line(line: str) -> list[int]:
 
 if __name__ == "__main__":
     claw_machines = []
-    with open("data_day13.txt", "r") as f:
+    with open("../data/data_day13.txt", "r") as f:
         a = []
         b = []
         target = []

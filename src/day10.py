@@ -29,7 +29,7 @@ def score_all_trailheads(data: np.ndarray, allow_duplicate_ends=False):
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("data_day10.csv", header=None).to_numpy()
+    data = pd.read_csv("../data/data_day10.csv", header=None).to_numpy()
 
     # Allow duplicates is False for the first part of the assignment, True for the second.
     print(score_all_trailheads(data, allow_duplicate_ends=True))

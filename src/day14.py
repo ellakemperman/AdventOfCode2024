@@ -72,7 +72,7 @@ if __name__ == "__main__":
     bots = []
     max_x, max_y = 101, 103
 
-    with open("data_day14.txt", "r") as f:
+    with open("../data/data_day14.txt", "r") as f:
         for line in f:
             bots.append(Robot(line, max_x, max_y))
 

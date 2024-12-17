@@ -55,7 +55,7 @@ def count_cross_mas_matches(matrix: np.ndarray) -> int:
 
 if __name__ == "__main__":
     char_list = []
-    with open("data_day4.txt", "r") as f:
+    with open("../data/data_day4.txt", "r") as f:
         for line in f:
             line_chars = []
             for char in line:

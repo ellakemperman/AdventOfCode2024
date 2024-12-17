@@ -16,7 +16,7 @@ def check_list(xs, removed=False):
 
 if __name__=="__main__":
     truths = []
-    with open("data_day2.csv", "r") as f:
+    with open("../data/data_day2.csv", "r") as f:
         for line in f:
             xs = line.split(",")
             for i, item in enumerate(xs):

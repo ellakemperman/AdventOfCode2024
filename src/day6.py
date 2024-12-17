@@ -86,7 +86,7 @@ class Guard:
 
 
 if __name__ == "__main__":
-    map = pd.read_csv("data_day6.csv", header=None).to_numpy()
+    map = pd.read_csv("../data/data_day6.csv", header=None).to_numpy()
     guard = Guard(np.array(np.where(map == "^")).reshape(2,), Board(map))
     start_time = time.time()
     print(guard.find_loops())

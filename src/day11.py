@@ -76,7 +76,7 @@ def simulate_stone(stones: dict[int, int], rules: tuple[StoneRule, ...], n_sims:
 
 if __name__ == '__main__':
     rules = (ZeroToOneRule(), StoneSplitRule(), DefaultRule())
-    with open("data_day11.txt", "r") as f:
+    with open("../data/data_day11.txt", "r") as f:
         line = f.readline()
     data = {}
     for ele in line.split(" "):

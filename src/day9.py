@@ -71,7 +71,7 @@ class Disk:
 
 
 if __name__ == "__main__":
-    with open("data_day9.txt", "r") as f:
+    with open("../data/data_day9.txt", "r") as f:
         disk_str = f.readline()
 
     disk = Disk(disk_str)

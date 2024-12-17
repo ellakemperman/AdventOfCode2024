@@ -45,10 +45,10 @@ def reorder_orderings(orderings: list, rules: pd.DataFrame) -> int:
 
 
 if __name__ == "__main__":
-    rules = pd.read_csv("data_day5.csv")
+    rules = pd.read_csv("../data/data_day5.csv")
 
     orderings = []
-    with open("data_day5.txt", "r") as f:
+    with open("../data/data_day5.txt", "r") as f:
         for line in f:
             orderings.append(list(map(lambda x: int(x), line.strip("\n").split(","))))
 

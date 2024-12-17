@@ -37,7 +37,7 @@ def count_calibration(data: list[tuple], operators=(add, mul)) -> int:
 
 if __name__ == "__main__":
     data = []
-    with open("data_day7.txt", "r") as f:
+    with open("../data/data_day7.txt", "r") as f:
         for line in f:
             line_str = line.split(":")
             total = int(line_str[0])

@@ -71,10 +71,10 @@ def scale_ocean(ocean: np.ndarray) -> np.ndarray:
 
 
 if __name__ == "__main__":
-    ocean = pd.read_csv("data_day15.csv", header=None).to_numpy()
+    ocean = pd.read_csv("../data/data_day15.csv", header=None).to_numpy()
     extended_ocean = scale_ocean(ocean)
 
-    with open("data_day15.txt", "r") as f:
+    with open("../data/data_day15.txt", "r") as f:
         instructions_str = f.readline()
         instructions = []
 

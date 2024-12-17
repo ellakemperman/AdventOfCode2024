@@ -2,7 +2,7 @@ import re
 
 
 if __name__ == '__main__':
-    with open("data_day3.txt", "r") as f:
+    with open("../data/data_day3.txt", "r") as f:
         txt = ""
         for line in f:
             txt += line

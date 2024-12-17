@@ -44,5 +44,5 @@ def calc_all_area_perimeter(data: np.ndarray) -> int:
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("data_day12.csv", header=None).to_numpy()
+    data = pd.read_csv("../data/data_day12.csv", header=None).to_numpy()
     print(calc_all_area_perimeter(data))

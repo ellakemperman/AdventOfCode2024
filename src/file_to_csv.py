@@ -3,7 +3,7 @@ import re
 
 if __name__ == "__main__":
     f_name = "test.csv"
-    pattern = "[A-Z]"
+    pattern = "O|.|#"
 
     with open(f_name, "r") as f:
         lines = f.readlines()

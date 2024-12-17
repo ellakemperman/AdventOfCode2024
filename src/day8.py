@@ -62,7 +62,7 @@ def compute_all_antinodes(antennas: list[Antenna], map_size: np.array, n_harmoni
 if __name__ == "__main__":
     antennas = []
 
-    with open("data_day8.txt", "r") as f:
+    with open("../data/data_day8.txt", "r") as f:
         for i, line in enumerate(f):
             for j, char in enumerate(line):
                 if char != ".":
